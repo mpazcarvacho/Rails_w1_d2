@@ -1,7 +1,7 @@
 #Desafío2 - parte2
 #María Paz Carvacho
 
-require_relative 
+require_relative "./carta.rb"
 
 class Baraja
 
@@ -11,14 +11,35 @@ class Baraja
       @cartas = cartas
 
       pintas = ['C', 'T', 'D', 'E']
-      13.times do |c|
-        c += 1
+      13.times do |numero|
+        numero += 1
         pintas.each do |pinta|
-          puts "pinta: #{pinta}| número: #{number}"
-          nueva_carta = Carta.new(pinta, i)
-          nueva_carta << @cartas
+          puts "Baraja creada: pinta: #{pinta}| número: #{numero}"
+          nueva_carta = Carta.new(numero, pinta)
+          @cartas.push(nueva_carta)
         end
       end
     end
 
+  def barajar
+    @cartas = self.cartas.shuffle
+  end
+
+  def sacar
+    self.cartas.shift
+  end
+
+  def repartir_mano
+    self.cartas.shift(5)
+  end
+
 end
+
+baraja1 = Baraja.new()
+
+puts "Baraja mezclada:" #Añadí esto de este modo para que no se mostrarán los ids de las cartas
+puts baraja1.barajar
+puts "Primera carta"
+puts baraja1.sacar
+puts "Primeras 5 cartas"
+puts baraja1.repartir_mano

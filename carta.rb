@@ -10,4 +10,8 @@ class Carta
     @pinta = pinta
   end
 
+  def to_s
+    "pinta: #{pinta}| número: #{numero}"
+  end
+
 end
